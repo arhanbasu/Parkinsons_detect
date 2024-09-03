@@ -1,0 +1,11 @@
+introduction
+
+literature survey/related works
+
+proposed model
+
+experimental result/result analysis
+
+future scope
+
+conclusion

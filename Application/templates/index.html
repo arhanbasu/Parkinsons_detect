@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="halloween">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MRI Parkinson's test</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@3.9.3/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+
+    <div class="navbar bg-primary text-primary-content opacity-70 absolute top-0 backdrop-blur-xl shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] shadow-orange-400">
+        <a class="btn btn-ghost normal-case text-xl brightness-150 contrast-150">MRI Parkinson's test</a>
+    </div>
+
+    <div
+      class="hero min-h-screen"
+      style="
+        background-image: url(https://media.istockphoto.com/id/532505851/photo/mri-brain-scan.jpg?s=612x612&w=0&k=20&c=YgETfIgna7MkMLsSqenXoJDW2ippxbizN81qcGwAskA=);
+      "
+    >
+      <div class="hero-overlay bg-opacity-70"></div>
+      <div class="hero-content text-center text-neutral-content">
+        <div class="max-w-md">
+          <h1 class="mb-5 text-5xl font-bold">Parkinson's Detection using MRI</h1>
+          <p class="mb-5">
+            Just upload the MRI scan of the patient and check if they are infected with the Parkinson's disease.
+          </p>
+
+          <form class="flex flex-col gap-3 md:flex-row" action="/result/" method=POST enctype="multipart/form-data">
+            {% csrf_token %}
+            <input name="mri" type="file" class="file-input file-input-bordered file-input-secondary w-full max-w-xl" />
+            <button type="submit" id="send" class="btn btn-secondary bg-purple-800">Test</button>
+          </form>
+          
+          <span id="loader" class="hidden mt-2 loading loading-dots loading-lg"></span>
+          
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let loader = document.getElementById("loader");
+      let button = document.getElementById("send");
+      button.addEventListener("click", ()=>{
+        console.log("Clicked");
+        loader.classList.remove("hidden");
+        loader.classList.add("absolute");
+      });
+    </script>
+
+  </body>
+</html>

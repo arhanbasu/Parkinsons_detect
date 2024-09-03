@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="halloween">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MRI Parkinson's test</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@3.9.3/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+
+    <div class="navbar bg-primary text-primary-content opacity-70 absolute top-0 backdrop-blur-xl shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] shadow-orange-400">
+        <a class="btn btn-ghost normal-case text-xl brightness-150 contrast-150">MRI Parkinson's test</a>
+    </div>
+
+    <div class="hero min-h-screen bg-base-200" style="background-image: url(https://media.istockphoto.com/id/532505851/photo/mri-brain-scan.jpg?s=612x612&w=0&k=20&c=YgETfIgna7MkMLsSqenXoJDW2ippxbizN81qcGwAskA=);">
+      <div class="hero-overlay bg-opacity-70"></div>
+      <div class="hero-content flex-col lg:flex-row">
+
+        <div class="indicator">
+          
+          {% if result == 'infected' %}
+          <span class="indicator-item badge badge-error">Infected</span>
+          {% elif result == 'healthy' %}
+          <span class="indicator-item badge badge-success">Healthy</span>
+          {% else %}
+          <span class="indicator-item badge badge-warning">Unknown</span>
+          {% endif %}
+
+          
+          <img src="/media/upload.png" class="max-w-sm rounded-lg shadow-2xl" />
+        </div>
+        
+        <div>
+          <h1 class="text-5xl font-bold">Parkinson's Detection results</h1>
+          <p class="py-6">Here are the results for the uploaded MRI scan of the patient: <br>Probability of the patient having Parkinson's disease is <b> {{ score }}% </b>. The person {% if result == 'infected' %} <b>may be suffering</b> {% else %} <b>may NOT be suffering</b> {% endif %} from Parkinson's disease</p>
+          <a class="btn btn-primary" href="{% url 'index' %}">Test again</a>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

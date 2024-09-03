@@ -1,0 +1,8 @@
+django
+Pillow
+tensorflow-cpu
+
+# For model plotting using 'tf.keras.utils.plot_model' only
+pydot
+graphviz
+pydotplus
